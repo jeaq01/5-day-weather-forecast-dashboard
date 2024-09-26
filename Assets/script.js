@@ -12,8 +12,9 @@ getWeatherBtn.addEventListener('click', async () => {
   
     try {
         const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${apiKey}`);
+        console.log(response);
         const data = await response.json();
-
+         console.log(data);
         if (data.cod !== '200') {
             throw new Error(data.message);
         }
@@ -31,16 +32,22 @@ function displayWeather(data) {
 
     forecasts.forEach(forecast => {
         const date = new Date(forecast.dt * 1000);
-        const day = date.toLocaleDateString('en-US', { weekday: 'long' });
+        console.log(date);
+        const day = date.toLocaleDateString('en-US', { dateStyle: 'full' });
         const temp = forecast.main.temp;
+        const humidity= forecast.main.humidity;
+        const wind= forecast.wind.speed;
         const weatherDescription = forecast.weather[0].description;
 
         const card = document.createElement('div');
         card.className = 'weather-card';
         card.innerHTML = `
             <h3>${day}</h3>
-            <p>${temp} °C</p>
+            <p>Temp: ${temp} °C</p>
+            <p>Wind: ${wind} MPH </p>
+            <p>humidity: ${humidity}%</p>
             <p>${weatherDescription}</p>
+
         `;
 
         weatherDisplay.appendChild(card);
