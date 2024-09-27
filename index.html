@@ -13,9 +13,17 @@
         <h1>Weather Dashboard</h1>
         <input type="text" id="cityInput" placeholder="Enter City">
         <button id="getWeatherBtn">Get Weather</button>
-        <div id="weatherDisplay" class="weather-result"></div>
+        <div id="weatherDisplay" class="weather-result">
+        </div>
+        <div id="weatherHistory" class="weather-history"
+            style="display: flex; flex-direction: row; align-items: center; justify-content: center; margin-top: 20px;">
+        </div>
     </div>
     <script src="./Assets/script.js"></script>
+    <script src="path/to/dayjs/dayjs.min.js"></script>
+    <script>
+        dayjs().format()
+    </script>
 </body>
 
 </html>
